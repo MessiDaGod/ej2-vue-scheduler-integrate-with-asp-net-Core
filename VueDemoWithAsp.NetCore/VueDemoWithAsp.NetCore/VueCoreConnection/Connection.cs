@@ -15,7 +15,7 @@ namespace VueDemoWithAsp.NetCore.VueCoreConnection
     public static class Connection
     {
        
-        private static int Port { get; } = 8080;
+        private static int Port { get; } = 8181;
         private static Uri DevelopmentServerEndpoint { get; } = new Uri($"http://localhost:{Port}");
         private static TimeSpan Timeout { get; } = TimeSpan.FromSeconds(600);
        

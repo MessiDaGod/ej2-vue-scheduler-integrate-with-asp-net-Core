@@ -8,9 +8,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@syncfusion/ej2-vue-schedule": "^19.2.46",
     "core-js": "^2.6.5",
-    "vue": "^2.6.10",
-    "@syncfusion/ej2-vue-schedule": "*"
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",

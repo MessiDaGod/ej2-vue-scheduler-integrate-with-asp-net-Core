@@ -1,48 +1,40 @@
 <template>
-    <div>
-        <div class="col-md-12 control-section">
-            <div class="content-wrapper">
-                <ejs-schedule id="Schedule"
-                              height="650px">
-                    <e-views>
-                        <e-view option="TimelineDay"></e-view>
-                        <e-view option="TimelineWeek"></e-view>
-                        <e-view option="TimelineWorkWeek"></e-view>
-                        <e-view option="TimelineMonth"></e-view>
-                        <e-view option="Agenda"></e-view>
-                    </e-views>
-                </ejs-schedule>
-            </div>
-        </div>
-    </div>
+  <div id='app'>
+  <ejs-schedule height='550px' width='100%' :selectedDate='selectedDate'
+  :eventSettings= 'eventSettings'>
+    <e-views>
+      <e-view option='Week' startHour='07:00' endHour='15:00' ></e-view>
+      <e-view option='WorkWeek' startHour='10:00' endHour='18:00' ></e-view>
+      <e-view option='Month' showWeekend=false></e-view>
+    </e-views>
+  </ejs-schedule>
+  </div>
 </template>
-<style>
-    @import "../node_modules/@syncfusion/ej2-base/styles/material.css";
-    @import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
-    @import "../node_modules/@syncfusion/ej2-calendars/styles/material.css";
-    @import "../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
-    @import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
-    @import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
-    @import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
-    @import "../node_modules/@syncfusion/ej2-schedule/styles/material.css";
-</style>
-
 <script>
-    import Vue from "vue";
-    import {
-        SchedulePlugin,
-        Agenda,
-        TimelineViews,
-        TimelineMonth,
-        Resize,
-        DragAndDrop
-    } from "@syncfusion/ej2-vue-schedule";
-    Vue.use(SchedulePlugin);
-    export default Vue.extend({
-        provide: {
-            schedule: [Agenda, TimelineViews, TimelineMonth, Resize, DragAndDrop]
-        },
-        methods: {}
-    });
+  import Vue from 'vue';
+  import { scheduleData } from './datasource.js';
+  import { extend } from '@syncfusion/ej2-base';
+  import { SchedulePlugin,  WorkWeek, Month, Week } from '@syncfusion/ej2-vue-schedule';
+  Vue.use(SchedulePlugin);
+  export default {
+data () {
+  return {
+    eventSettings: { dataSource: extend([], scheduleData, null, true) },
+    selectedDate: new Date(2018, 1, 15)
+  }
+},
+provide: {
+  schedule: [ WorkWeek, Month, Week]
+}
+  }
 </script>
-
+<style>
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-vue-schedule/styles/material.css';
+</style>
